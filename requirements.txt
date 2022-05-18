@@ -2,4 +2,5 @@ sklearn
 numpy
 pandas
 lime
+xgboost
 streamlit==1.1.*

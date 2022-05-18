@@ -2,5 +2,4 @@ sklearn
 numpy
 pandas
 lime
-pickle==4.0
 streamlit==1.1.*

@@ -2,7 +2,51 @@ import numpy as np
 import pickle
 import streamlit as st
 import warnings
+from lime import lime_tabular
+import pandas as pd
 warnings.filterwarnings('ignore')
+
+
+#Finding Explanations:
+x_scaled_full = pd.read_csv('x_scaled_full.csv')
+
+
+def explanation_model(input_data_as_numpy_array, prediction):
+    target_names = np.array([0, 1])
+    columns = np.array(list(x_scaled_full.columns))
+    explainer = lime_tabular.LimeTabularExplainer(np.array(x_scaled_full), mode="classification",
+                                                  class_names=['No', 'Yes'],
+                                                  feature_names=columns, feature_selection='lasso_path'
+                                                  )
+
+    loaded_model = pickle.load(open('trained_model.sav', 'rb'))
+
+    explanation = explainer.explain_instance(input_data_as_numpy_array, loaded_model.predict_proba,
+                                             num_features=10)
+    explanations = explanation.as_list()
+
+    yes_explanation = []
+    no_explanation = []
+    for i in explanations:
+        if i[1] >= 0:
+            yes_explanation.append(i[0])
+        else:
+            no_explanation.append(i[0])
+
+    if prediction[0] == True:
+        if len(yes_explanation) >=3:
+
+            return yes_explanation[0:3]
+        else:
+            return yes_explanation
+
+    elif prediction[0] == False:
+        if len(no_explanation) >=3:
+            return no_explanation[0:3]
+        else:
+            return no_explanation
+
+
 
 # loading the model:
 loaded_model = pickle.load(open('trained_model.sav', 'rb'))
@@ -10,21 +54,26 @@ loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 # Creating a prediction function:
 def heart_disease_prediction(input_data):
 
-
-
     # Creating a numpy array using input data
     input_data_as_numpy_array = np.asarray(input_data)
 
     # reshaping the array to predict only one instance
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
 
-    prediction = loaded_model.predict(input_data_reshaped)
+    # prediction = loaded_model.predict(input_data_reshaped)
+    md_probs = loaded_model.predict_proba(input_data_reshaped)[:,1]
+    prediction = (md_probs >= 0.101).astype(bool)
+
     print("Model Prediction is: ", prediction)
 
-    if prediction[0] == 0:
-        return 'This person does not have a heart disease'
+    model_explanations = explanation_model(input_data_as_numpy_array,  prediction)
+    st.table(pd.DataFrame(model_explanations, columns = ['Reason']))
+    st.write('Based on reasons above, it is probable that this person: ')
+
+    if prediction[0] == True:
+        return ('Has a heart disease ')
     else:
-        return 'This person has a heart disease'
+        return ('Does not have a heart disease ')
 
 def main():
 
@@ -35,7 +84,7 @@ def main():
     st.write('This is a web app created to predict whether a person is suffering from heart disease\
              Please provide accurate information with the best of your knowledge\
              Then click on Heart Disease Prediction Results to see the prediction.\
-             Model\'s ROC-AUC score is 0.8422 with 78.3% Recall and 22.5% Precision')
+             Model\'s ROC-AUC score is 0.8443 with 84% Recall and 77% Accuracy')
 
 
     Smoking_Yes = 0
@@ -74,15 +123,15 @@ def main():
 
     #Getting User Input Data
 
-    BMI = st.number_input('Body Mass Index (BMI)')
+    BMI = st.number_input('Body Mass Index (BMI)', min_value = 0, max_value = 40)
 
     PhysicalHealth = st.slider("For how many days during the past 30 days were you sick?", 0, 30)
 
     MentalHealth = st.slider('For how many days during past 30 days wes your mental health not good?', 0, 30)
 
-    SleepTime = st.number_input('On average, how many hours of sleep do you get?')
+    SleepTime = st.slider('On average, how many hours of sleep do you get per day?', min_value = 0, max_value = 24)
 
-    Smoking = st.radio('Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 ciggarettes]', ['Yes', 'No'])
+    Smoking = st.radio('Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 cigarettes]', ['Yes', 'No'])
     if(Smoking == 'Yes'):
         Smoking_Yes = 1
     else:
@@ -167,7 +216,7 @@ def main():
     elif (Diabetic == 'Yes (during pregnancy)'):
         Diabetic_Yes__during_pregnancy_ = 1
 
-    PhysicalActivity = st.radio('Did you perform any routine physical activity apart from your job?', ['Yes', 'No'])
+    PhysicalActivity = st.radio('Do you perform any routine physical activity apart from your job?', ['Yes', 'No'])
     PhysicalActivity_Yes = 0
     if (PhysicalActivity == 'Yes'):
         PhysicalActivity_Yes = 1

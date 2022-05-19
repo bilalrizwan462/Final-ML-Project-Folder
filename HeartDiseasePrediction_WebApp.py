@@ -281,6 +281,6 @@ def main():
 
         st.write('Disclaimer: Please note that these results are not to be used for \
         diagnosing heart conditions. In case of any symptoms, please consult a cardiologist!')
-
-if __name__ == '__main__':
     main()
+if __name__ == '__main__':
+    

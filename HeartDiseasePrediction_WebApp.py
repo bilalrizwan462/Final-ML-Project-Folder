@@ -262,7 +262,7 @@ def main():
 
     # Creating a button for prediction
 
-    while st.button('Heart Disease Prediction Results') == True:
+    if st.button('Heart Disease Prediction Results') == True:
 
         diagnosis = heart_disease_prediction([BMI, PhysicalHealth, MentalHealth, SleepTime, Smoking_Yes,
         AlcoholDrinking_Yes, Stroke_Yes, DiffWalking_Yes, Sex_Male,

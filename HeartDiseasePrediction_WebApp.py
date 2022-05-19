@@ -76,6 +76,7 @@ def heart_disease_prediction(input_data):
     else:
         return ('Does not have a heart disease ')
 
+@st.cache(suppress_st_warning=True)
 def main():
 
     # Giving title
@@ -124,27 +125,27 @@ def main():
 
     #Getting User Input Data
 
-    BMI = st.number_input('Body Mass Index (BMI)', min_value = 0, max_value = 40)
+    BMI = st.number_input('Body Mass Index (BMI)', min_value = 0, max_value = 40, on_change= None)
 
     PhysicalHealth = st.slider("For how many days during the past 30 days were you sick?", 0, 30, on_change= None)
 
-    MentalHealth = st.slider('For how many days during past 30 days wes your mental health not good?', 0, 30)
+    MentalHealth = st.slider('For how many days during past 30 days wes your mental health not good?', 0, 30, on_change= None)
 
-    SleepTime = st.slider('On average, how many hours of sleep do you get per day?', min_value = 0, max_value = 24)
+    SleepTime = st.slider('On average, how many hours of sleep do you get per day?', min_value = 0, max_value = 24, on_change= None)
 
-    Smoking = st.radio('Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 cigarettes]', ['Yes', 'No'])
+    Smoking = st.radio('Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 cigarettes]', ['Yes', 'No'], on_change= None)
     if(Smoking == 'Yes'):
         Smoking_Yes = 1
     else:
         Smoking_Yes = 0
 
-    AlcoholDrinking = st.radio('Are you a heavy drinker? (Adult men having more than 14 drinks per week and adult women having more than 7 drinks per week', ['Yes', 'No'])
+    AlcoholDrinking = st.radio('Are you a heavy drinker? (Adult men having more than 14 drinks per week and adult women having more than 7 drinks per week', ['Yes', 'No'], on_change= None)
     if (AlcoholDrinking == 'Yes'):
         AlcoholDrinking_Yes = 1
     else:
         AlcoholDrinking_Yes = 0
 
-    Stroke = st.radio('Did you ever suffer from a stroke ?', ['Yes', 'No'])
+    Stroke = st.radio('Did you ever suffer from a stroke ?', ['Yes', 'No'], on_change= None)
     if (Stroke == 'Yes'):
         Stroke_Yes = 1
     else:
@@ -152,14 +153,14 @@ def main():
 
 
 
-    DiffWalking = st.radio('Do you have a serious difficulty walking or climbing stairs?', ['Yes', 'No'])
+    DiffWalking = st.radio('Do you have a serious difficulty walking or climbing stairs?', ['Yes', 'No'], on_change= None)
     if (DiffWalking == 'Yes'):
         DiffWalking_Yes = 1
     else:
         DiffWalking_Yes = 0
 
 
-    Sex = st.radio('Are you male or female?', ['Male', 'Female'])
+    Sex = st.radio('Are you male or female?', ['Male', 'Female'], on_change= None)
 
     if (Sex == 'Male'):
         Sex_Male = 1
@@ -168,7 +169,7 @@ def main():
 
     AgeCategory = st.radio('Which age category do you belong to ?', ['18-24', '25-29', '30-34', '35-39', '40-44',
                                                           '45-49', '50-54', '55-59', '60-64', '65-69',
-                                                                     '70-74', '75-79', '80 or older'])
+                                                                     '70-74', '75-79', '80 or older'], on_change= None)
 
 
     if (AgeCategory == '25-29'):
@@ -197,7 +198,7 @@ def main():
         AgeCategory_80_or_older = 1
 
     Race = st.radio('Which race do you belong to ?', ['White', 'Black', 'Asian', 'American Indian/Alaskan Native',
-                                                      'Hispanic', 'Other'])
+                                                      'Hispanic', 'Other'], on_change= None)
     if (Race == 'Asian'):
         Race_Asian = 1
     elif (Race == 'Black'):
@@ -209,7 +210,7 @@ def main():
     elif (Race == 'White'):
         Race_White = 1
 
-    Diabetic = st.radio('Are you diabetic?', ['Yes', 'No', 'borderline diabetes', 'Yes (during pregnancy)'])
+    Diabetic = st.radio('Are you diabetic?', ['Yes', 'No', 'borderline diabetes', 'Yes (during pregnancy)'], on_change= None)
     if (Diabetic == 'Yes'):
         Diabetic_Yes = 1
     elif (Diabetic == 'borderline diabetes'):
@@ -217,7 +218,7 @@ def main():
     elif (Diabetic == 'Yes (during pregnancy)'):
         Diabetic_Yes__during_pregnancy_ = 1
 
-    PhysicalActivity = st.radio('Do you perform any routine physical activity apart from your job?', ['Yes', 'No'])
+    PhysicalActivity = st.radio('Do you perform any routine physical activity apart from your job?', ['Yes', 'No'], on_change= None)
     PhysicalActivity_Yes = 0
     if (PhysicalActivity == 'Yes'):
         PhysicalActivity_Yes = 1
@@ -225,7 +226,7 @@ def main():
         PhysicalActivity_Yes = 0
 
 
-    GenHealth = st.radio('How would you describe your general health?', ['Very good', 'Fair', 'Good', 'Poor', 'Excellent'])
+    GenHealth = st.radio('How would you describe your general health?', ['Very good', 'Fair', 'Good', 'Poor', 'Excellent'], on_change= None)
     if (GenHealth == 'Very good'):
         GenHealth_Very_good = 1
     elif (GenHealth == 'Fair'):
@@ -236,21 +237,21 @@ def main():
         GenHealth_Poor = 1
 
 
-    Asthma = st.radio('Are you Asthmatic?', ['Yes', 'No'])
+    Asthma = st.radio('Are you Asthmatic?', ['Yes', 'No'], on_change= None)
     if (Asthma == 'Yes'):
         Asthma_Yes = 1
     else:
         Asthma_Yes = 0
 
     KidneyDisease = st.radio('Not including kidney stones, bladder infection or incontinence,'
-                             ' were you ever told you had kidney disease?', ['Yes', 'No'])
+                             ' were you ever told you had kidney disease?', ['Yes', 'No'], on_change= None)
     if (KidneyDisease == 'Yes'):
         KidneyDisease_Yes = 1
     else:
         KidneyDisease_Yes = 0
 
 
-    SkinCancer = st.radio('Did you ever had (or have) skin cancer?', ['Yes', 'No'])
+    SkinCancer = st.radio('Did you ever had (or have) skin cancer?', ['Yes', 'No'], on_change= None)
     if (SkinCancer == 'Yes'):
         SkinCancer_Yes = 1
     else:
@@ -261,11 +262,11 @@ def main():
     diagnosis = ''
 
     # Creating a button for prediction
-    button_response = st.button('Heart Disease Prediction Results', on_click = None)
-    if "load_state" not in st.session_state:
-        st.session_state.load_state = False
-    if button_response or st.session_state.load_state:
-        st.session_state.load_state = True
+    button_response = st.button('Heart Disease Prediction Results')
+    # if "load_state" not in st.session_state:
+    #     st.session_state.load_state = False
+    if button_response:# orr st.session_state.load_state:
+        # st.session_state.load_state = True
 
         diagnosis = heart_disease_prediction([BMI, PhysicalHealth, MentalHealth, SleepTime, Smoking_Yes,
         AlcoholDrinking_Yes, Stroke_Yes, DiffWalking_Yes, Sex_Male,
@@ -285,5 +286,4 @@ def main():
         st.write('Disclaimer: Please note that these results are not to be used for \
         diagnosing heart conditions. In case of any symptoms, please consult a cardiologist!')
 
-if __name__ == '__main__':
-    main()
+main()

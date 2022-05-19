@@ -61,7 +61,8 @@ def heart_disease_prediction(input_data):
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
 
     # prediction = loaded_model.predict(input_data_reshaped)
-    md_probs = loaded_model.predict_proba(input_data_reshaped)[:,1]
+    md_probs = loaded_model.predict_proba(input_data_reshaped)
+    md_probs = md_probs[:,1]
     prediction = (md_probs >= 0.101).astype(bool)
 
     print("Model Prediction is: ", prediction)

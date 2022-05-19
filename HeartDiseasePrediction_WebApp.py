@@ -277,7 +277,7 @@ def main():
        GenHealth_Very_good, Asthma_Yes, KidneyDisease_Yes,
        SkinCancer_Yes])
 
-    st.success(diagnosis)
+        st.success(diagnosis)
 
     st.write('Disclaimer: Please note that these results are not to be used for \
     diagnosing heart conditions. In case of any symptoms, please consult a cardiologist!')

@@ -129,7 +129,7 @@ def main():
     BMI = st.number_input('Body Mass Index (BMI). Please press enter after adding your BMI', min_value = 0.0, max_value = 40.0,  on_change= None, step = 0.1)
 
 
-    PhysicalHealth = st.slider("For how many days during the past 30 days were you sick? Please do not drag the slider to avoid refreshing?", 0, 30, on_change= None)
+    PhysicalHealth = st.slider("For how many days during the past 30 days were you sick? Please do not drag the slider to avoid refreshing", 0, 30, on_change= None)
 
     MentalHealth = st.slider('For how many days during past 30 days wes your mental health not good?', 0, 30, on_change= None)
 

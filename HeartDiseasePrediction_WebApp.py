@@ -131,7 +131,7 @@ def main():
 
     PhysicalHealth = st.slider("For how many days during the past 30 days were you sick? Please do not drag the slider to avoid refreshing", 0, 30, on_change= None)
 
-    MentalHealth = st.slider('For how many days during past 30 days wes your mental health not good?', 0, 30, on_change= None)
+    MentalHealth = st.slider('For how many days during past 30 days wes your mental health not good? Please do not drag the slider to avoid refreshing', 0, 30, on_change= None)
 
     SleepTime = st.slider('On average, how many hours of sleep do you get per day? Please do not drag the slider to avoid refreshing', min_value = 0, max_value = 24, on_change= None)
 

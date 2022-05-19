@@ -126,7 +126,7 @@ def main():
     #Getting User Input Data
     st.write('Note: Please wait after giving every input and allow input request to be process in order to avoid page getting refreshed')
 
-    BMI = st.number_input('Body Mass Index (BMI). Please press enter after adding your BMI', min_value = 0, max_value = 40, on_change= None)
+    BMI = st.number_input('Body Mass Index (BMI). Please press enter after adding your BMI', min_value = 0, max_value = 40,  on_change= None, step = 0.1)
 
 
     PhysicalHealth = st.slider("For how many days during the past 30 days were you sick?", 0, 30, on_change= None)

@@ -19,7 +19,7 @@ def explanation_model(input_data_as_numpy_array, prediction):
                                                   feature_names=columns, feature_selection='lasso_path'
                                                   )
 
-    loaded_model = pickle.load(open('trained_model.sav', 'rb'))
+    loaded_model = load_model()
 
     explanation = explainer.explain_instance(input_data_as_numpy_array, loaded_model.predict_proba,
                                              num_features=10)
@@ -49,8 +49,11 @@ def explanation_model(input_data_as_numpy_array, prediction):
 
 
 # loading the model:
-loaded_model = pickle.load(open('trained_model.sav', 'rb'))
+@st.cache(suppress_st_warning= True, hash_funcs={"MyUnhashableClass": lambda _: None})
+def load_model():
+    return pickle.load(open('trained_model.sav', 'rb'))
 
+loaded_model = load_model()
 # Creating a prediction function:
 def heart_disease_prediction(input_data):
 
@@ -76,7 +79,7 @@ def heart_disease_prediction(input_data):
     else:
         return ('Does not have a heart disease ')
 
-st.cache(suppress_st_warning= True)
+st.cache(suppress_st_warning= True, ttl=24*3600)
 def main():
 
     # Giving title

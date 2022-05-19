@@ -49,7 +49,7 @@ def explanation_model(input_data_as_numpy_array, prediction):
 
 
 # loading the model:
-@st.cache(suppress_st_warning= True, hash_funcs={"MyUnhashableClass": lambda _: None})
+@st.cache(suppress_st_warning= True)
 def load_model():
     return pickle.load(open('trained_model.sav', 'rb'))
 

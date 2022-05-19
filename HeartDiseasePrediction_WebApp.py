@@ -49,11 +49,10 @@ def explanation_model(input_data_as_numpy_array, prediction):
 
 
 # loading the model:
-@st.cache(suppress_st_warning= True)
 def load_model():
     return pickle.load(open('trained_model.sav', 'rb'))
 
-loaded_model = load_model()
+
 # Creating a prediction function:
 def heart_disease_prediction(input_data):
 
@@ -62,7 +61,7 @@ def heart_disease_prediction(input_data):
 
     # reshaping the array to predict only one instance
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
-
+    loaded_model = load_model()
     # prediction = loaded_model.predict(input_data_reshaped)
     md_probs = loaded_model.predict_proba(input_data_reshaped)
     md_probs = md_probs[:,1]

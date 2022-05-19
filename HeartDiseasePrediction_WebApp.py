@@ -88,7 +88,7 @@ def main():
     st.write('This is a web app created to predict whether a person is suffering from heart disease\
              Please provide accurate information with the best of your knowledge\
              Then click on Heart Disease Prediction Results to see the prediction.\
-             Model\'s ROC-AUC score is 0.8443 with 84% Recall and 77% Accuracy')
+             Model\'s ROC-AUC score is 0.8443 with 84% Recall and 71% Accuracy')
 
 
     Smoking_Yes = 0

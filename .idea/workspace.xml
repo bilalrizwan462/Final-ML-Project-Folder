@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="913dda3e-8052-492a-a52a-b3cca966ccd4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Complete Working-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Complete Working-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/All Best Models.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/All Best Models.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Best Model for Streamlit Deployement.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Best Model for Streamlit Deployement.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Complete Working.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Complete Working.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HeartDiseasePrediction Web App.py" beforeDir="false" afterPath="$PROJECT_DIR$/HeartDiseasePrediction Web App.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trained_model.sav" beforeDir="false" afterPath="$PROJECT_DIR$/trained_model.sav" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

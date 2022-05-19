@@ -3,4 +3,5 @@ numpy
 pandas
 lime
 xgboost
+click==7.0
 streamlit==1.1.*

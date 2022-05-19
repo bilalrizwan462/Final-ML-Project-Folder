@@ -76,7 +76,7 @@ def heart_disease_prediction(input_data):
     else:
         return ('Does not have a heart disease ')
 
-@st.cache(suppress_st_warning=True)
+
 def main():
 
     # Giving title
@@ -263,10 +263,10 @@ def main():
 
     # Creating a button for prediction
     button_response = st.button('Heart Disease Prediction Results')
-    # if "load_state" not in st.session_state:
-    #     st.session_state.load_state = False
-    if button_response:# orr st.session_state.load_state:
-        # st.session_state.load_state = True
+    if "load_state" not in st.session_state:
+        st.session_state.load_state = False
+    if button_response or st.session_state.load_state:
+        st.session_state.load_state = True
 
         diagnosis = heart_disease_prediction([BMI, PhysicalHealth, MentalHealth, SleepTime, Smoking_Yes,
         AlcoholDrinking_Yes, Stroke_Yes, DiffWalking_Yes, Sex_Male,

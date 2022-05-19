@@ -262,20 +262,20 @@ def main():
 
     # Creating a button for prediction
 
-    if st.button('Heart Disease Prediction Results'):
+    if st.button('Heart Disease Prediction Results') == True:
 
         diagnosis = heart_disease_prediction([BMI, PhysicalHealth, MentalHealth, SleepTime, Smoking_Yes,
-       AlcoholDrinking_Yes, Stroke_Yes, DiffWalking_Yes, Sex_Male,
-       AgeCategory_25_29, AgeCategory_30_34, AgeCategory_35_39,
-       AgeCategory_40_44, AgeCategory_45_49, AgeCategory_50_54,
-       AgeCategory_55_59, AgeCategory_60_64, AgeCategory_65_69,
-       AgeCategory_70_74, AgeCategory_75_79, AgeCategory_80_or_older,
-       Race_Asian, Race_Black, Race_Hispanic, Race_Other, Race_White,
-       Diabetic_No__borderline_diabetes, Diabetic_Yes,
-       Diabetic_Yes__during_pregnancy_, PhysicalActivity_Yes,
-       GenHealth_Fair, GenHealth_Good, GenHealth_Poor,
-       GenHealth_Very_good, Asthma_Yes, KidneyDisease_Yes,
-       SkinCancer_Yes])
+        AlcoholDrinking_Yes, Stroke_Yes, DiffWalking_Yes, Sex_Male,
+        AgeCategory_25_29, AgeCategory_30_34, AgeCategory_35_39,
+        AgeCategory_40_44, AgeCategory_45_49, AgeCategory_50_54,
+        AgeCategory_55_59, AgeCategory_60_64, AgeCategory_65_69,
+        AgeCategory_70_74, AgeCategory_75_79, AgeCategory_80_or_older,
+        Race_Asian, Race_Black, Race_Hispanic, Race_Other, Race_White,
+        Diabetic_No__borderline_diabetes, Diabetic_Yes,
+        Diabetic_Yes__during_pregnancy_, PhysicalActivity_Yes,
+        GenHealth_Fair, GenHealth_Good, GenHealth_Poor,
+        GenHealth_Very_good, Asthma_Yes, KidneyDisease_Yes,
+        SkinCancer_Yes])
 
         st.success(diagnosis)
 

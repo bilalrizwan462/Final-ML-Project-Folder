@@ -124,8 +124,10 @@ def main():
     SkinCancer_Yes = 0
 
     #Getting User Input Data
+    st.write('Note: Please wait after giving every input and allow input request to be process in order to avoid page getting refreshed')
 
-    BMI = st.number_input('Body Mass Index (BMI)', min_value = 0, max_value = 40, on_change= None)
+    BMI = st.number_input('Body Mass Index (BMI). Please press enter after adding your BMI', min_value = 0, max_value = 40, on_change= None)
+
 
     PhysicalHealth = st.slider("For how many days during the past 30 days were you sick?", 0, 30, on_change= None)
 

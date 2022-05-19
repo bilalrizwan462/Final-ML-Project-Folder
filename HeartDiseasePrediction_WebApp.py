@@ -128,7 +128,7 @@ def main():
 
     PhysicalHealth = st.slider("For how many days during the past 30 days were you sick?", 0, 30, on_change= None)
 
-    MentalHealth = st.slider('For how many days during past 30 days wes your mental health not good?', 0, 30, on_change= None)
+    MentalHealth = st.slider('For how many days during past 30 days wes your mental health not good?', 0, 30)
 
     SleepTime = st.slider('On average, how many hours of sleep do you get per day?', min_value = 0, max_value = 24)
 
@@ -261,9 +261,11 @@ def main():
     diagnosis = ''
 
     # Creating a button for prediction
-    button_response = False
     button_response = st.button('Heart Disease Prediction Results', on_click = None)
-    if button_response == True:
+    if "load_state" not in st.session_state:
+        st.session_state.load_state = False
+    if button_response or st.session_state.load_state:
+        st.session_state.load_state = True
 
         diagnosis = heart_disease_prediction([BMI, PhysicalHealth, MentalHealth, SleepTime, Smoking_Yes,
         AlcoholDrinking_Yes, Stroke_Yes, DiffWalking_Yes, Sex_Male,

@@ -10,12 +10,12 @@ warnings.filterwarnings('ignore')
 
 
 #The code below is to find explanations:
-x_scaled_full = pd.read_csv('x_scaled_full.csv')
+x_onehot_full = pd.read_csv('x_onehot_full.csv')
 
 def explanation_model(input_data_as_numpy_array, prediction):
     target_names = np.array([0, 1])
-    columns = np.array(list(x_scaled_full.columns))
-    explainer = lime_tabular.LimeTabularExplainer(np.array(x_scaled_full), mode="classification",
+    columns = np.array(list(x_onehot_full.columns))
+    explainer = lime_tabular.LimeTabularExplainer(np.array(x_onehot_full), mode="classification",
                                                   class_names=['No', 'Yes'],
                                                   feature_names=columns, feature_selection='lasso_path'
                                                   )

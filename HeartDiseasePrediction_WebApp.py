@@ -1,3 +1,5 @@
+# Importing important libraries
+
 import numpy as np
 import pickle
 import streamlit as st
@@ -7,9 +9,8 @@ import pandas as pd
 warnings.filterwarnings('ignore')
 
 
-#Finding Explanations:
+#The code below is to find explanations:
 x_scaled_full = pd.read_csv('x_scaled_full.csv')
-
 
 def explanation_model(input_data_as_numpy_array, prediction):
     target_names = np.array([0, 1])
@@ -33,6 +34,7 @@ def explanation_model(input_data_as_numpy_array, prediction):
         else:
             no_explanation.append(i[0])
 
+    # Selecting top 3 explanations for given prediction
     if prediction[0] == True:
         if len(yes_explanation) >=3:
 
@@ -69,6 +71,7 @@ def heart_disease_prediction(input_data):
 
     print("Model Prediction is: ", prediction)
 
+    #Finding prediction's explanation
     model_explanations = explanation_model(input_data_as_numpy_array,  prediction)
     st.table(pd.DataFrame(model_explanations, columns = ['Reason']))
     st.write('Based on reasons above, it is probable that this person: ')

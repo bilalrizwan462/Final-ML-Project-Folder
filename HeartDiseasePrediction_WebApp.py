@@ -233,7 +233,7 @@ def main():
         PhysicalActivity_Yes = 0
 
 
-    GenHealth = st.radio('How would you describe your general health?', ['Very good', 'Fair', 'Good', 'Poor', 'Excellent'], on_change= None)
+    GenHealth = st.radio('How would you describe your general health?', ['Excellent', 'Very good', 'Good', 'Fair', 'Poor' ], on_change= None)
     if (GenHealth == 'Very good'):
         GenHealth_Very_good = 1
     elif (GenHealth == 'Fair'):
